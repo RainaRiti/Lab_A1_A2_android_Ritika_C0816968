@@ -48,10 +48,7 @@ public class ProviderFragment extends Fragment {
         providerDao = database.getProviderDao();
         providers = providerDao.getAllProviders();
         adapter = new ProviderAdapter(getContext(),providers) {
-            @Override
-            public void updateScreen(int i) {
 
-            }
 
             @Override
             public void longPressIsInvoke(int i) {
@@ -92,6 +89,13 @@ public class ProviderFragment extends Fragment {
             }
         }
         adapter.updateList(temp);
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.updateList(DbConnect.getInstance(getContext()).getProviderDao().getAllProviders());
+        recyclerView.getAdapter().notifyDataSetChanged();
 
     }
 }

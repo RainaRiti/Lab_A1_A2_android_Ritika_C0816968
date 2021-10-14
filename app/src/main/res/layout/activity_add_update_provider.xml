@@ -140,12 +140,55 @@
                 android:textColor="#201D1D"
                 android:textSize="18sp" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_30"
+            >
+
+            <Button
+                android:id="@+id/call"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Call"
+                android:background="@color/purple_200"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/margin_30"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_marginLeft="@dimen/margin_30"
+                android:visibility="gone"
+                android:id="@+id/email"
+                android:text="Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/view_5"
+                android:background="@color/purple_200"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </TableRow>
     </TableLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_50"
+        android:id="@+id/remove_provider"
+        android:layout_margin="@dimen/view_20"
+        android:text="Remove"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:layout_gravity="center"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_50"

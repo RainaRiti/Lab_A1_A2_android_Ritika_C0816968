@@ -128,6 +128,16 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_50"
+        android:id="@+id/remove_product"
+        android:layout_margin="@dimen/view_20"
+        android:text="Remove"
+        android:visibility="gone"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:layout_gravity="center"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_50"
         android:id="@+id/add_product"
         android:layout_margin="@dimen/view_20"
         android:text="Add"

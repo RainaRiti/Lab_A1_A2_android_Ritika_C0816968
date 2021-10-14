@@ -12,9 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lab_a1_a2_android_ritika_c0816968.Db.DbConnect;
 import com.example.lab_a1_a2_android_ritika_c0816968.Db.Provider;
 import com.example.lab_a1_a2_android_ritika_c0816968.R;
 import com.example.lab_a1_a2_android_ritika_c0816968.ui.dashboard.AddUpdateProduct;
+import com.example.lab_a1_a2_android_ritika_c0816968.ui.dashboard.AddUpdateProvider;
 
 import java.util.List;
 
@@ -40,6 +42,7 @@ public abstract class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapt
         holder.lng.setText(""+providerList.get(position).getProvider_long());
         holder.emailAdd.setText(providerList.get(position).getProvider_email());
         holder.phone.setText(providerList.get(position).getProvider_phone());
+        holder.count.setText(""+DbConnect.getInstance(context).getProductDao().getCount(providerList.get(position).getProvider_id()));
     }
 
     @Override
@@ -48,17 +51,21 @@ public abstract class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapt
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
-        TextView phone,title,emailAdd, lat,lng;
+        TextView phone,title,emailAdd, lat,lng,count;
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             title=(TextView)itemView.findViewById(R.id.title);
+            count=(TextView)itemView.findViewById(R.id.product_count);
             emailAdd=(TextView)itemView.findViewById(R.id.txtViewemail);
             phone =  (TextView)itemView.findViewById(R.id.txtViewPhone);
             lat =  (TextView)itemView.findViewById(R.id.txtViewlat);
             lng =  (TextView)itemView.findViewById(R.id.txtViewlng);
 
             itemView.setOnClickListener(v ->{
-
+                Intent intent = new Intent(context, AddUpdateProvider.class);
+                intent.putExtra("provider_id", providerList.get(getAdapterPosition()).getProvider_id());
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             });
             itemView.setOnLongClickListener(v -> {
                 longPressIsInvoke(getAdapterPosition());
@@ -72,6 +79,5 @@ public abstract class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapt
         providerList = temp;
         notifyDataSetChanged();
     }
-    public abstract void updateScreen(int i);
     public abstract void longPressIsInvoke(int i);
 }

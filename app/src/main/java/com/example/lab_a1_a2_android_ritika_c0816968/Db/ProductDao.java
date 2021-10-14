@@ -13,9 +13,10 @@ public interface ProductDao {
     @Query("SELECT * FROM Product")
     List<Product> getAll();
 
-    @Query("SELECT * FROM Product WHERE provider_id = :id")
+    @Query("SELECT * FROM Product WHERE product_id = :id")
     Product getProduct(int id);
-
+    @Query("SELECT COUNT(*) FROM Product WHERE provider_id = :id")
+    int getCount(int id);
     @Insert
     void insertProducts(List<Product> Products);
 
@@ -24,7 +25,7 @@ public interface ProductDao {
 
 
     @Update
-    void update(Product repos);
+    void update(Product product);
 
 
     @Delete

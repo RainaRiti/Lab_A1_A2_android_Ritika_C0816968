@@ -105,4 +105,11 @@ public class ProductFragment extends Fragment {
         adapter.updateList(temp);
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.updateList(DbConnect.getInstance(getContext()).getProductDao().getAll());
+        recyclerView.getAdapter().notifyDataSetChanged();
+
+    }
 }
